@@ -15,13 +15,25 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+main {
+  padding: 20px;
+}
+
+main button {
+  margin: 5px;
+}
+
+main input {
+  margin: 5px;
 }
 
 .App-link {

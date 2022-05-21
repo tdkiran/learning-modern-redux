@@ -20,19 +20,21 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">Counter</header>
-      <button type="button" onClick={() => dispatch(increment())}>
-        Add
-      </button>
-      <button type="button" onClick={() => dispatch(decrement())}>
-        Decrement
-      </button>
-      <button type="button" onClick={() => dispatch(reset())}>
-        Reset
-      </button>
-      <div>
-        <input type="text" value={count} onChange={handleChange} />
-      </div>
-      count is: {count}
+      <main>
+        <button type="button" onClick={() => dispatch(increment())}>
+          Add
+        </button>
+        <button type="button" onClick={() => dispatch(decrement())}>
+          Decrement
+        </button>
+        <button type="button" onClick={() => dispatch(reset())}>
+          Reset
+        </button>
+        <div>
+          <input type="number" value={count} onChange={handleChange} />
+        </div>
+        count is: {count}
+      </main>
     </div>
   );
 }

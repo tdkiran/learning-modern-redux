@@ -2,7 +2,7 @@ import { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { useAppDispatch, useAppSelector } from "./app/hooks";
-import { increment } from "./features/counter/counter-slice";
+import { decrement, increment, reset } from "./features/counter/counter-slice";
 
 function App() {
   const count = useAppSelector((state) => state.counter.value);
@@ -13,8 +13,14 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Counter</p>
-        <button type="button" onClick={() => dispatch(increment)}>
+        <button type="button" onClick={() => dispatch(increment())}>
           Add
+        </button>
+        <button type="button" onClick={() => dispatch(decrement())}>
+          Decrement
+        </button>
+        <button type="button" onClick={() => dispatch(reset())}>
+          Reset
         </button>
         count is: {count}
       </header>

@@ -1,29 +1,38 @@
-import { useState } from "react";
-import logo from "./logo.svg";
+import React from "react";
 import "./App.css";
 import { useAppDispatch, useAppSelector } from "./app/hooks";
-import { decrement, increment, reset } from "./features/counter/counter-slice";
+import {
+  decrement,
+  increment,
+  reset,
+  setCount,
+} from "./features/counter/counter-slice";
 
 function App() {
   const count = useAppSelector((state) => state.counter.value);
   const dispatch = useAppDispatch();
 
+  function handleChange(event: React.FormEvent<HTMLInputElement>) {
+    event.preventDefault();
+    const count = Number(event?.currentTarget?.value);
+    dispatch(setCount(count));
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Counter</p>
-        <button type="button" onClick={() => dispatch(increment())}>
-          Add
-        </button>
-        <button type="button" onClick={() => dispatch(decrement())}>
-          Decrement
-        </button>
-        <button type="button" onClick={() => dispatch(reset())}>
-          Reset
-        </button>
-        count is: {count}
-      </header>
+      <header className="App-header">Counter</header>
+      <button type="button" onClick={() => dispatch(increment())}>
+        Add
+      </button>
+      <button type="button" onClick={() => dispatch(decrement())}>
+        Decrement
+      </button>
+      <button type="button" onClick={() => dispatch(reset())}>
+        Reset
+      </button>
+      <div>
+        <input type="text" value={count} onChange={handleChange} />
+      </div>
+      count is: {count}
     </div>
   );
 }
